@@ -112,3 +112,41 @@ let notaNumber: number = NaN;
 
 let underscoreNum: number = 1_000_000;
 ```
+### Symbol
+- ECMAScript 2015의 Symbol
+- new Symbol로 사용할 수 없다
+- Symbol을 함수로 사용해서 symbol 타입을 만들어낼 수 있다.
+- 어디서 사용하나?
+  - 프리미티브 타입의 값을 담아서 사용
+  - 고유하고 수정불가능한 값으로 만들어 준다
+  - 그래서 주로 접근을 제어하는데 쓰는 경우가 많았다 
+
+### Undefined & Null
+- TypeScript에서, undefined와 null은 실제로 각각 undefined 및 null 이라는 타입을 가진다
+- void와 마찬가지로, 그 자체로는 그다지 유용하지 않다
+- 둘 다 소문자만 존재한다
+```js
+// 이 변수들에 할당할 수 있는 것들은 거의 없다.
+let u: undefined = undefined
+let n: null = null
+```
+> undefined & null 은 다른 모든 타입의 서브타입으로 존재한다
+- number에 null 또는 undefined를 할당할 수 있다는 의미이다
+- 컴파일 옵션에서 '--strictNullChecks'를 사용하면 null과 undefined는 void나 자기 자신들에게만 할당할 수 있다
+    - 이 경우, null과 undefined를 할당할 수 있게 하려면, union type을 이용해야 한다.
+
+```js
+union type
+let union: string | null = null;
+
+union = "Mark"
+```
+- null in JavaScript
+  - 무언가가 있는데, 사용할 준비가 덜 된 상태
+  - null 이라는 타입은 null 이라는 값만 가질 수 있다
+  - 런타임에서 typeof 연산자를 이용해서 알아내면, object이다
+
+- undefined in JavaScript
+  - 값을 할당하지 않은 변수는 undefined라는 값을 가진다
+  - 무언가가 아예 준비가 안된 상태
+  - object의 property가 없을 때도 undefined
