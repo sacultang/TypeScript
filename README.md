@@ -150,3 +150,29 @@ union = "Mark"
   - 값을 할당하지 않은 변수는 undefined라는 값을 가진다
   - 무언가가 아예 준비가 안된 상태
   - object의 property가 없을 때도 undefined
+
+### Object
+- 'primitive type 이 아닌 것'을 나타내고 싶을 때 사용하는 타입
+- JavaScript에서 Object는 실제 값이 아닌 값이 들어있는 정보를 나타낸다
+- TypeScript에서 Object는 JavaScript와 의미가 다르다
+
+```js
+// creat by object literal
+const person1 = {name:'Mark',age:39}
+
+// person1 is not "object" type
+// person1 is "{name:string, age:number}" type
+
+// create by Object.create
+const person2 = Object.create({name:'Mark',age:39})
+```
+
+### Array
+```js
+let list: number[] = [1,2,3] // 이 방식 권장
+
+let list: Array<number> = [1,2,3]
+
+let list: number[] = [1,2,3,'4'] // Error
+let list: (number | string)[] = [1,2,3,'4'] // union 타입으로 작성 해주면 된다
+```
