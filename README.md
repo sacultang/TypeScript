@@ -192,3 +192,27 @@ const person: [string,number] = ["Mark",39]
 const [first, second] = person; // 구조분해 first:string , second:number 확인할 수 있다
 const [first, second, third] = person; //길이에 맞지 않기때문에 에러
 ```
+
+### any
+- 어떤 타입이어도 상관없는 타입
+- 이걸 최대한 쓰지 않는게 핵심
+- 왜냐면 컴파일 타임에 타입 체크가 정상적으로 이뤄지지 않기 때문
+- 컴파일 옵션 중에는 any를 써야하는데 쓰지 않으면 오류를 뱉도록 하는 옵션도 있다
+  - nolmplicitAny
+
+```js
+function returnAny (message): any{
+  console.log(message)
+}
+const any1 = returnAny('리턴은 아무거나')
+
+any1.toString();
+```
+- any는 계속해서 개체를 통해 전파된다
+- 타입 안전성을 잃는 대가로 다가온다
+- 타입 안전성은 TypeScript를 사용하는 주요 동기 중 하나이며 필요하지 않은 경우에는 any를 사용하지 말아야 한다
+
+```js
+let looselyTyped: any = {};
+const d = looselyTyped.a.b.c.d; 
+```
