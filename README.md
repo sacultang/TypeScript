@@ -176,3 +176,19 @@ let list: Array<number> = [1,2,3]
 let list: number[] = [1,2,3,'4'] // Error
 let list: (number | string)[] = [1,2,3,'4'] // union 타입으로 작성 해주면 된다
 ```
+
+### tuple 
+- 길이가 정해져 있다
+- 앞뒤의 타입이 정확한 자료형
+```js
+let x : [string,number];
+
+x = ['Hello',3]
+x = [3,'hello'] // 타입 순서가 바뀌었기 때문에 에러
+x[3] = "hello" // 길이에 맞지 않는 조건이기 때문에 에러
+
+const person: [string,number] = ["Mark",39]
+
+const [first, second] = person; // 구조분해 first:string , second:number 확인할 수 있다
+const [first, second, third] = person; //길이에 맞지 않기때문에 에러
+```
