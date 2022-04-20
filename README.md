@@ -93,3 +93,22 @@ function reverse(s:string):string{
 }
 reverse('hello world')
 ```
+
+### Type Number
+- TypeScript의 모든 숫자는 부동 소수점 값
+- 16진수 10진수 리터럴 외에도, 2진수 8진수 지원
+- NaN
+- 1_000_000 와 같은 표기 가능
+```js
+let decimal: number = 6; // 10진수
+
+let hex: number = 0xf00d // 16진수
+
+let binary: number = 0b1010; // 2진수
+
+let octal: number = 0o744; // 8진수
+
+let notaNumber: number = NaN;
+
+let underscoreNum: number = 1_000_000;
+```
