@@ -10,7 +10,7 @@ let looselyTyped: any = {};
 const d = looselyTyped.a.b.c.d;
 
 function leakingAny(obj:any){
-  const a = obj.num;
+  const a: number = obj.num;
   const b = a + 1; 
   return b;
 }

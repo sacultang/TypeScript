@@ -216,3 +216,60 @@ any1.toString();
 let looselyTyped: any = {};
 const d = looselyTyped.a.b.c.d; 
 ```
+
+### unknown
+- 응용 프로그램을 작성할 때 모르는 변수의 타입을 묘사해야 할 수도 있다
+- 이러한 값은 동적 컨텐츠(예: 사용자로부터, 또는 우리 API)의 모든 값을 의도적으로 수락하기를 원할 수 있다
+- 이 경우 컴파일러와 미래의 코드를 읽는 사람에게 이 변수가 무엇이든 될 수 있음을 알려주는 타입을 제공하기를 원하므로
+unknown 타입을 제공한다
+
+```js
+declare const maybe: unknown; // maybe에 unknown 할당
+
+const aNumber: number = maybe; // maybe는 unknown이기 때문에 number형식에 할당할 수 없다
+
+if(maybe === true){ 
+  const aBoolean: boolean = maybe; // type guard 를 통해 maybe는 boolean이 됨
+  // const aString: string = maybe; // maybe는 boolean 이기때문에 string에 할당할 수 없다
+}
+
+if(typeof maybe === 'string'){
+  const aString: string = maybe;
+  // const aBoolean: boolean = maybe;
+}
+```
+- Typescript 3.0 부터 지원
+- any와 짝으로 any 보다 Type-safe한 타입
+  - any와 같이 아무거나 할당할 수 있다
+  - 컴파일러가 타입을 추론할 수 있게끔 타입의 유형을 좁히거나
+  - 타입을 확정해주지 않으면 다른 곳에 할당 할 수 없고, 사용할 수 없다.
+- unknown 타입을 사용하면 runtime error를 줄일수 있을 것 같다
+  - 사용 전에 데이터의 일부 유형의 검사를 수행해야 함을 알리는 API에 사용할 수 있을 것 같다.
+
+### never
+
+- never 타입은 모든 타입의 subtype이며, 모든 타입에 할당 할 수 있다.
+- 하지만 never에는 그 어떤 것도 할당할 수 없다
+- any 조차도 never에게 할당할 수 없다
+- 잘못된 타입을 넣는 실수를 막고자 할때 사용하기도 한다
+```js
+let a: string = "hello";
+
+if(typeof a !== 'string'){
+  a; // a는 never다
+}
+```
+```js
+declare const a: string | number;
+
+if(typeof a !== 'string'){
+  a; // a는 number이다
+}
+```
+
+### void
+- 어떤 타입도 가지지 않는 빈 상태
+- 값은 없고 타입만 있다
+- 소문자를 사용
+- undefined만 할당할 수 있다.
+- return부분에 달아서 아무것도 하지 않겠다라고 명시적으로 표현하는것
